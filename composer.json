@@ -1,0 +1,14 @@
+{
+    "name": "laola1-benji/game-of-life",
+    "description": "Test",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "GameOfLife\\": "src/"
+        }
+    }
+}
+
