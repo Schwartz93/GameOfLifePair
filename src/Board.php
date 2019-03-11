@@ -10,29 +10,52 @@
 namespace GameOfLife;
 
 require "IBoard.php";
+require "Cell.php";
 
-class Board extends IBoard {
+class Board {
 
-    public $name;
-    public $width;
-    public $height;
+    public $fileName;
+    public $rawFile; // Bessere Idee?
+    public $gridHeight;
+    public $gridWidth;
     public $cells;
 
-    public function __construct($name, $width, $height)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->width = $width;
-        $this->height = $height;
         $this->cells = [];
     }
 
-    public function generateGrid($width, $height)
-    {
-
+    public function initCells() {
+        foreach ($this->cells as $cell){
+            $cell = new Cell();
+        }
     }
 
-    public function displayGrid()
-    {
+    public function getRawFileFromCsv() {
+        $counter = 0;
+        $openFile = fopen("src/Blinker.csv", "r");
+        while (!feof($openFile)) {
+            if ($counter === 0) {
+                $this->fileName = fgets($openFile);
+            } elseif ($counter === 1) {
+                $line = fgets($openFile);
+                $tmp = explode(",", $line);
+                $this->gridWidth = $tmp[0];
+                $this->gridHeight = $tmp[1];
+            } else {
 
+                // TODO:
+                //$this->cells->isAlive = str_split(fgets($openFile));
+            }
+            $counter++;
+        }
+        fclose($openFile);
+    }
+
+    public function displayGrid() {
+        foreach ($this->cells as $cell) {
+            echo $cell;
+            echo "<br>";
+        }
     }
 }

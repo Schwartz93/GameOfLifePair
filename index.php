@@ -8,8 +8,8 @@
 
 namespace GameOfLife;
 
-require "src/GetStartPattern.php";
+require "src/Board.php";
 
-$test = new GetStartPattern();
-$test->getFileNameFromCsv();
-$test->getPattern();
+$test = new Board();
+$test->getRawFileFromCsv();
+$test->displayGrid();

@@ -8,5 +8,11 @@
 
 class Cell
 {
+    public $isAlive;
+
+    public function __construct()
+    {
+        $this->isAlive = "O";
+    }
 
 }
